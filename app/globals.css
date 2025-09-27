@@ -1,26 +1,30 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Custom rounded corner utility for 15px radius */
+.rounded-15 {
+  border-radius: 15px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Custom size for side images (slightly smaller than main) */
+.w-side-image {
+  width: 280px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.h-side-image {
+  height: 280px;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom width utility for 90% of viewport */
+.w-90 {
+  width: 90vw;
+}
+
+/* Custom padding top utility for 20px */
+.pt-20px {
+  padding-top: 20px;
+}
+
+/* Custom gap utility for 1px spacing */
+.gallery-1px-gap {
+  gap: 1px !important;
 }
