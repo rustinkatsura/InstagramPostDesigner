@@ -263,6 +263,7 @@ export default function Home() {
          />
          <UploadArea
             uploadedPhotos={uploadedPhotos}
+            uploadingPhotos={uploadingPhotos}
             sequencedPhotos={sequencedPhotos}
             onFileUpload={handleFileUpload}
             onDragStart={handleDragStart}
@@ -637,6 +638,7 @@ function SequenceStrip({
 
 function UploadArea({
    uploadedPhotos,
+   uploadingPhotos,
    sequencedPhotos,
    onFileUpload,
    onDragStart,
