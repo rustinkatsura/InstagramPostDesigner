@@ -468,14 +468,6 @@ function SequenceStrip({
                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
                         </svg>
                      </div>
-                     <div className="text-center">
-                        <div className="text-xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-orange-500 bg-clip-text text-transparent mb-2" style={{fontFamily: 'Pacifico, cursive'}}>
-                           Start Your Post
-                        </div>
-                        <div className="text-sm text-gray-600 font-medium opacity-90">
-                           Click to upload your first photo
-                        </div>
-                     </div>
                      <input
                         type="file"
                         multiple
@@ -707,9 +699,6 @@ function UploadArea({
                      </div>
                      <div>
                         <h3 className="text-lg font-medium text-gray-600 mb-2">Upload Your Photos</h3>
-                        <p className="text-sm text-gray-600 mb-4">
-                           {isDragOver ? "Drop your photos here!" : "Drop files here or click to browse"}
-                        </p>
                         <label className="inline-block px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white rounded-lg cursor-pointer btn-enhanced shadow-luxury hover:shadow-luxury-hover font-medium">
                            Choose Files
                            <input
