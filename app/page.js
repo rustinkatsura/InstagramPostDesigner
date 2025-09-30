@@ -365,15 +365,31 @@ function SequenceStrip({
       <div
          className="w-[100%] h-[50%] relative overflow-hidden flex flex-col z-20"
          style={{
-            background: 'rgba(255, 255, 255, 0.85)',
-            backdropFilter: 'blur(20px) saturate(180%)',
-            borderImage: 'linear-gradient(45deg, #f9a8d4, #dda0dd, #feb2b2) 1',
-            borderWidth: '2px',
+            background: `
+               linear-gradient(135deg,
+                  rgba(255, 255, 255, 0.25) 0%,
+                  rgba(255, 255, 255, 0.15) 25%,
+                  rgba(255, 255, 255, 0.05) 50%,
+                  rgba(255, 255, 255, 0.15) 75%,
+                  rgba(255, 255, 255, 0.25) 100%
+               ),
+               linear-gradient(45deg,
+                  rgba(248, 113, 113, 0.08) 0%,
+                  rgba(236, 72, 153, 0.08) 25%,
+                  rgba(147, 51, 234, 0.08) 50%,
+                  rgba(236, 72, 153, 0.08) 75%,
+                  rgba(248, 113, 113, 0.08) 100%
+               )
+            `,
+            backdropFilter: 'blur(25px) saturate(200%) brightness(120%)',
+            borderImage: 'linear-gradient(45deg, rgba(249, 168, 212, 0.6), rgba(221, 160, 221, 0.6), rgba(254, 178, 178, 0.6)) 1',
+            borderWidth: '1px',
             borderStyle: 'solid',
             boxShadow: `
-               0 8px 32px rgba(236, 72, 153, 0.12),
-               0 2px 16px rgba(147, 51, 234, 0.08),
-               inset 0 1px 0 rgba(255, 255, 255, 0.4)
+               0 8px 32px rgba(0, 0, 0, 0.08),
+               0 4px 20px rgba(236, 72, 153, 0.15),
+               inset 0 1px 2px rgba(255, 255, 255, 0.6),
+               inset 0 -1px 2px rgba(0, 0, 0, 0.05)
             `
          }}
          onDragOver={handleAreaDragOver}
