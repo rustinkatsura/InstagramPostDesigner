@@ -690,8 +690,8 @@ function UploadArea({
                         </svg>
                      </div>
                      <div>
-                        <h3 className="text-lg font-medium text-gray-700 mb-2">Upload Your Photos</h3>
-                        <p className="text-sm text-gray-500 mb-4">
+                        <h3 className="text-lg font-medium text-gray-600 mb-2">Upload Your Photos</h3>
+                        <p className="text-sm text-gray-600 mb-4">
                            {isDragOver ? "Drop your photos here!" : "Drop files here or click to browse"}
                         </p>
                         <label className="inline-block px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white rounded-lg cursor-pointer btn-enhanced shadow-luxury hover:shadow-luxury-hover font-medium">
@@ -774,7 +774,7 @@ function UploadArea({
                `
             }}>
                <div className="flex justify-between items-center mb-4">
-                  <h2 className="text-xl font-semibold text-gray-800">
+                  <h2 className="text-xl font-semibold text-gray-600">
                      Photo Gallery
                   </h2>
                   <button
@@ -796,7 +796,7 @@ function UploadArea({
                      background: 'rgba(252, 231, 243, 0.4)',
                      boxShadow: 'inset 0 1px 3px rgba(236, 72, 153, 0.1)'
                   }}>
-                     <h3 className="text-sm font-medium text-gray-700 mb-2">📱 Gallery Actions</h3>
+                     <h3 className="text-sm font-medium text-gray-600 mb-2">📱 Gallery Actions</h3>
                      <div className="space-y-1 text-xs text-gray-600">
                         <div>• Click photos to add to sequence</div>
                         <div>• Drag photos to reorder in view</div>
@@ -808,7 +808,7 @@ function UploadArea({
                      background: 'rgba(243, 232, 255, 0.4)',
                      boxShadow: 'inset 0 1px 3px rgba(147, 51, 234, 0.1)'
                   }}>
-                     <h3 className="text-sm font-medium text-gray-700 mb-2">🎯 View Controls</h3>
+                     <h3 className="text-sm font-medium text-gray-600 mb-2">🎯 View Controls</h3>
                      <div className="space-y-1 text-xs text-gray-600">
                         <div>• Click current (highlighted) photo to remove</div>
                         <div>• Use zoom - / + buttons to resize view</div>
@@ -821,7 +821,7 @@ function UploadArea({
                      background: 'rgba(255, 237, 213, 0.4)',
                      boxShadow: 'inset 0 1px 3px rgba(251, 191, 36, 0.1)'
                   }}>
-                     <h3 className="text-sm font-medium text-gray-700 mb-2">🔢 Photo Numbers</h3>
+                     <h3 className="text-sm font-medium text-gray-600 mb-2">🔢 Photo Numbers</h3>
                      <div className="space-y-1 text-xs text-gray-600">
                         <div>• Numbers auto-update when reordering</div>
                         <div>• Sequence goes 1, 2, 3... in visual order</div>
@@ -833,7 +833,7 @@ function UploadArea({
                      background: 'rgba(252, 231, 243, 0.4)',
                      boxShadow: 'inset 0 1px 3px rgba(236, 72, 153, 0.1)'
                   }}>
-                     <h3 className="text-sm font-medium text-gray-700 mb-2">⌨️ Keyboard Shortcuts</h3>
+                     <h3 className="text-sm font-medium text-gray-600 mb-2">⌨️ Keyboard Shortcuts</h3>
                      <div className="space-y-1 text-xs text-gray-600">
                         <div>• ← Left Arrow: Previous photo</div>
                         <div>• → Right Arrow: Next photo</div>
@@ -844,7 +844,7 @@ function UploadArea({
                      background: 'rgba(243, 232, 255, 0.4)',
                      boxShadow: 'inset 0 1px 3px rgba(147, 51, 234, 0.1)'
                   }}>
-                     <h3 className="text-sm font-medium text-gray-700 mb-2">📊 Stats</h3>
+                     <h3 className="text-sm font-medium text-gray-600 mb-2">📊 Stats</h3>
                      <div className="text-xs text-gray-600">
                         Photos uploaded: {uploadedPhotos.length}
                      </div>
