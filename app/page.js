@@ -191,9 +191,16 @@ export default function Home() {
 
          // Animate removal
          setTimeout(() => {
-            setSequencedPhotos((prev) =>
-               prev.map((p) => (p?.id === photoId ? null : p))
-            );
+            setSequencedPhotos((prev) => {
+               const newSequenced = prev.map((p) => (p?.id === photoId ? null : p));
+
+               // If we're removing the currently selected photo, deselect it
+               if (prev[currentPhotoIndex]?.id === photoId) {
+                  setCurrentPhotoIndex(-1);
+               }
+
+               return newSequenced;
+            });
             setUploadedPhotos((prev) => [...prev, photo]);
             setRemovingPhotoId(null);
             setIsTransitioning(false);
@@ -466,9 +473,8 @@ function SequenceStrip({
          <div
             className="flex-1 flex items-center px-[30px] relative overflow-x-auto scroll-smooth"
             onClick={(e) => {
-               // Deselect if clicking on empty space (not on an image)
-               if (e.target === e.currentTarget || e.target.closest('.image-container') === null) {
-                  // Set to -1 to indicate no selection
+               // Deselect if clicking on empty space
+               if (e.target === e.currentTarget) {
                   setCurrentPhotoIndex(-1);
                }
             }}
@@ -524,7 +530,8 @@ function SequenceStrip({
                      } ${
                         removingPhotoId === photo.id ? 'animate-none' : ''
                      }`}
-                     onClick={() => {
+                     onClick={(e) => {
+                        e.stopPropagation(); // Prevent bubbling to container
                         if (isCurrent) {
                            onRemove(photo.id);
                         } else {
