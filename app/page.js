@@ -237,63 +237,66 @@ export default function Home() {
    }, [currentPhotoIndex, sequencedPhotos]);
 
    return (
-      <div className="h-screen flex flex-col bg-gray-50 relative overflow-hidden">
-         {/* Enhanced layered background system */}
-         <div className="absolute inset-0 bg-gradient-to-br from-pink-100/40 via-purple-100/30 to-orange-100/35 pointer-events-none z-0"></div>
+      <>
+         <div className="h-screen flex flex-col bg-gray-50 relative overflow-hidden">
+            {/* Enhanced layered background system */}
+            <div className="absolute inset-0 bg-gradient-to-br from-pink-100/40 via-purple-100/30 to-orange-100/35 pointer-events-none z-0"></div>
 
-         {/* Layer 1: Large ambient orbs */}
-         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-pink-200/25 via-purple-200/15 to-transparent rounded-full blur-3xl pointer-events-none z-1" style={{transform: 'translate(100px, -100px)'}}></div>
-         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-purple-200/25 via-orange-200/15 to-transparent rounded-full blur-3xl pointer-events-none z-1" style={{transform: 'translate(-100px, 100px)'}}></div>
+            {/* Layer 1: Large ambient orbs */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-pink-200/25 via-purple-200/15 to-transparent rounded-full blur-3xl pointer-events-none z-1" style={{transform: 'translate(100px, -100px)'}}></div>
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-purple-200/25 via-orange-200/15 to-transparent rounded-full blur-3xl pointer-events-none z-1" style={{transform: 'translate(-100px, 100px)'}}></div>
 
-         {/* Layer 2: Medium floating elements */}
-         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-pink-300/10 to-purple-300/10 rounded-full blur-2xl pointer-events-none z-2" style={{animation: 'float 6s ease-in-out infinite'}}></div>
-         <div className="absolute bottom-1/3 right-1/3 w-48 h-48 bg-gradient-to-l from-orange-300/10 to-pink-300/10 rounded-full blur-2xl pointer-events-none z-2" style={{animation: 'float 8s ease-in-out infinite reverse'}}></div>
+            {/* Layer 2: Medium floating elements */}
+            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-pink-300/10 to-purple-300/10 rounded-full blur-2xl pointer-events-none z-2" style={{animation: 'float 6s ease-in-out infinite'}}></div>
+            <div className="absolute bottom-1/3 right-1/3 w-48 h-48 bg-gradient-to-l from-orange-300/10 to-pink-300/10 rounded-full blur-2xl pointer-events-none z-2" style={{animation: 'float 8s ease-in-out infinite reverse'}}></div>
 
-         {/* Layer 3: Small accent particles */}
-         <div className="absolute top-1/2 right-1/4 w-32 h-32 bg-gradient-to-br from-purple-400/15 to-pink-400/15 rounded-full blur-xl pointer-events-none z-3" style={{animation: 'float 4s ease-in-out infinite'}}></div>
-         <SequenceStrip
-            sequencedPhotos={sequencedPhotos}
-            currentPhotoIndex={currentPhotoIndex}
-            onDrop={handleSequenceDrop}
-            onAreaDrop={handleSequenceAreaDrop}
-            onRemove={handleRemoveFromSequence}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-            onNext={nextPhoto}
-            onPrev={prevPhoto}
-            onPhotoClick={setCurrentPhotoIndex}
-            onFileUpload={handleFileUpload}
-            zoomLevel={zoomLevel}
-            onZoomIn={handleZoomIn}
-            onZoomOut={handleZoomOut}
-            isTransitioning={isTransitioning}
-            removingPhotoId={removingPhotoId}
-            photoTransition={photoTransition}
-         />
-         <UploadArea
-            uploadedPhotos={uploadedPhotos}
-            uploadingPhotos={uploadingPhotos}
-            sequencedPhotos={sequencedPhotos}
-            onFileUpload={handleFileUpload}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-            onPhotoClick={handleGalleryPhotoClick}
-            sidebarCollapsed={sidebarCollapsed}
-            onToggleSidebar={toggleSidebar}
-            dragGhost={dragGhost}
-         />
+            {/* Layer 3: Small accent particles */}
+            <div className="absolute top-1/2 right-1/4 w-32 h-32 bg-gradient-to-br from-purple-400/15 to-pink-400/15 rounded-full blur-xl pointer-events-none z-3" style={{animation: 'float 4s ease-in-out infinite'}}></div>
+            <SequenceStrip
+               sequencedPhotos={sequencedPhotos}
+               currentPhotoIndex={currentPhotoIndex}
+               onDrop={handleSequenceDrop}
+               onAreaDrop={handleSequenceAreaDrop}
+               onRemove={handleRemoveFromSequence}
+               onDragStart={handleDragStart}
+               onDragEnd={handleDragEnd}
+               onNext={nextPhoto}
+               onPrev={prevPhoto}
+               onPhotoClick={setCurrentPhotoIndex}
+               onFileUpload={handleFileUpload}
+               zoomLevel={zoomLevel}
+               onZoomIn={handleZoomIn}
+               onZoomOut={handleZoomOut}
+               isTransitioning={isTransitioning}
+               removingPhotoId={removingPhotoId}
+               photoTransition={photoTransition}
+            />
+            <UploadArea
+               uploadedPhotos={uploadedPhotos}
+               uploadingPhotos={uploadingPhotos}
+               sequencedPhotos={sequencedPhotos}
+               onFileUpload={handleFileUpload}
+               onDragStart={handleDragStart}
+               onDragEnd={handleDragEnd}
+               onPhotoClick={handleGalleryPhotoClick}
+               sidebarCollapsed={sidebarCollapsed}
+               onToggleSidebar={toggleSidebar}
+               dragGhost={dragGhost}
+            />
+         </div>
 
          {/* Floating Help Button - Always visible in bottom right */}
          <button
             onClick={toggleSidebar}
-            className="absolute bottom-6 right-6 w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 rounded-full flex items-center justify-center btn-enhanced shadow-luxury hover:shadow-luxury-hover z-50"
+            className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 rounded-full flex items-center justify-center btn-enhanced shadow-luxury hover:shadow-luxury-hover"
+            style={{position: 'fixed', bottom: '24px', right: '24px', zIndex: 9999}}
             title="Show help & info"
          >
             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
          </button>
-      </div>
+      </>
    );
 }
 
@@ -475,7 +478,7 @@ function SequenceStrip({
             onClick={(e) => {
                // Deselect if clicking on empty space
                if (e.target === e.currentTarget) {
-                  setCurrentPhotoIndex(-1);
+                  onPhotoClick(-1);
                }
             }}
          >
@@ -720,7 +723,9 @@ function UploadArea({
          `
       }}>
          {/* Gallery Content */}
-         <div className={`${sidebarCollapsed ? 'w-full' : 'flex-1'} p-6 transition-all duration-300`}>
+         <div className="w-full p-6 transition-all duration-300" style={{
+            paddingRight: sidebarCollapsed ? '24px' : '280px'
+         }}>
             {uploadedPhotos.length === 0 ? (
                <div
                   className={`border-2 border-dashed rounded-lg p-8 mb-4 text-center transition-all duration-300 ${
@@ -812,8 +817,9 @@ function UploadArea({
          </div>
 
          {/* Collapsible Sidebar */}
-         {!sidebarCollapsed && (
-            <div className="w-64 p-6 transform transition-all duration-300 ease-in-out z-30" style={{
+         <div
+            className="w-64 p-6 transform transition-all duration-300 ease-in-out z-30 absolute right-0 top-0 h-full"
+            style={{
                background: 'rgba(255, 255, 255, 0.85)',
                backdropFilter: 'blur(20px) saturate(180%)',
                borderLeft: '2px solid',
@@ -822,10 +828,13 @@ function UploadArea({
                   -4px 0 16px rgba(236, 72, 153, 0.08),
                   -2px 0 8px rgba(147, 51, 234, 0.04),
                   inset 1px 0 0 rgba(255, 255, 255, 0.4)
-               `
-            }}>
-               <div className="flex justify-between items-center mb-4">
-                  <h2 className="text-xl font-semibold text-gray-600">
+               `,
+               transform: sidebarCollapsed ? 'translateX(100%)' : 'translateX(0)',
+               pointerEvents: sidebarCollapsed ? 'none' : 'auto'
+            }}
+         >
+            <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-orange-500 bg-clip-text text-transparent" style={{fontFamily: 'Pacifico, cursive'}}>
                      Photo Gallery
                   </h2>
                   <button
@@ -839,7 +848,7 @@ function UploadArea({
                   </button>
                </div>
 
-               <div className="space-y-4">
+               <div className="space-y-4 overflow-y-auto" style={{maxHeight: 'calc(100% - 60px)'}}>
                   {/* Add floating decoration elements */}
                   <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-pink-200/20 to-purple-200/20 rounded-full blur-sm pointer-events-none" style={{animation: 'float 5s ease-in-out infinite'}}></div>
                   <div className="absolute bottom-20 left-4 w-8 h-8 bg-gradient-to-tl from-orange-200/20 to-pink-200/20 rounded-full blur-sm pointer-events-none" style={{animation: 'float 7s ease-in-out infinite reverse'}}></div>
@@ -904,8 +913,7 @@ function UploadArea({
                      </div>
                   </div>
                </div>
-            </div>
-         )}
+         </div>
 
       </div>
    );
