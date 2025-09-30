@@ -463,7 +463,7 @@ function SequenceStrip({
          {/* Main Carousel View */}
          <div className="flex-1 flex items-center px-[30px] relative overflow-x-auto scroll-smooth">
             {/* All Visible Photos - Side by Side Layout */}
-            <div className={`flex items-center gap-2 transition-all duration-700 ease-in-out min-w-max mx-auto ${
+            <div className={`flex items-center gap-[10px] transition-all duration-700 ease-in-out min-w-max mx-auto ${
                isTransitioning ? 'opacity-75 scale-95' : 'opacity-100 scale-100'
             }`}>
                {visiblePhotos.length === 0 ? (
