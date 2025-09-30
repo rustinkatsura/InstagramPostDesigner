@@ -158,7 +158,8 @@ export default function Home() {
    const nextPhoto = () => {
       setPhotoTransition('slide-left');
       setTimeout(() => {
-         for (let i = currentPhotoIndex + 1; i < sequencedPhotos.length; i++) {
+         const startIndex = currentPhotoIndex === -1 ? -1 : currentPhotoIndex;
+         for (let i = startIndex + 1; i < sequencedPhotos.length; i++) {
             if (sequencedPhotos[i] !== null) {
                setCurrentPhotoIndex(i);
                break;
@@ -171,7 +172,8 @@ export default function Home() {
    const prevPhoto = () => {
       setPhotoTransition('slide-right');
       setTimeout(() => {
-         for (let i = currentPhotoIndex - 1; i >= 0; i--) {
+         const startIndex = currentPhotoIndex === -1 ? sequencedPhotos.length : currentPhotoIndex;
+         for (let i = startIndex - 1; i >= 0; i--) {
             if (sequencedPhotos[i] !== null) {
                setCurrentPhotoIndex(i);
                break;
@@ -461,7 +463,16 @@ function SequenceStrip({
          </h2>
 
          {/* Main Carousel View */}
-         <div className="flex-1 flex items-center px-[30px] relative overflow-x-auto scroll-smooth">
+         <div
+            className="flex-1 flex items-center px-[30px] relative overflow-x-auto scroll-smooth"
+            onClick={(e) => {
+               // Deselect if clicking on empty space (not on an image)
+               if (e.target === e.currentTarget || e.target.closest('.image-container') === null) {
+                  // Set to -1 to indicate no selection
+                  setCurrentPhotoIndex(-1);
+               }
+            }}
+         >
             {/* All Visible Photos - Side by Side Layout */}
             <div className={`flex items-center gap-[10px] transition-all duration-700 ease-in-out min-w-max mx-auto ${
                isTransitioning ? 'opacity-75 scale-95' : 'opacity-100 scale-100'
@@ -533,7 +544,7 @@ function SequenceStrip({
                      }}
                   >
                      <div
-                        className={`relative group transition-all duration-300 ${
+                        className={`image-container relative group transition-all duration-300 ${
                            dragOverIndex === index
                               ? "ring-4 ring-pink-400 ring-opacity-60 scale-110 shadow-2xl shadow-pink-500/40 animate-pulse"
                               : ""
