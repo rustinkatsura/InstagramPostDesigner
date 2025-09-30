@@ -271,6 +271,7 @@ export default function Home() {
             onPhotoClick={handleGalleryPhotoClick}
             sidebarCollapsed={sidebarCollapsed}
             onToggleSidebar={toggleSidebar}
+            dragGhost={dragGhost}
          />
       </div>
    );
@@ -646,6 +647,7 @@ function UploadArea({
    onPhotoClick,
    sidebarCollapsed,
    onToggleSidebar,
+   dragGhost,
 }) {
    const [isDragOver, setIsDragOver] = useState(false);
 
