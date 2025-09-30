@@ -443,7 +443,7 @@ function SequenceStrip({
             </div>
          )}
 
-         <h2 className="text-5xl font-bold text-center bg-gradient-to-r from-pink-600 via-purple-600 to-orange-500 bg-clip-text text-transparent pt-[30px] pb-4" style={{fontFamily: 'Pacifico, cursive'}}>
+         <h2 className="font-bold text-center bg-gradient-to-r from-pink-600 via-purple-600 to-orange-500 bg-clip-text text-transparent pt-[30px] pb-4" style={{fontFamily: 'Pacifico, cursive', fontSize: `${5 * zoomLevel}rem`}}>
             Design Your Instagram
          </h2>
 
@@ -463,16 +463,16 @@ function SequenceStrip({
                         background: 'linear-gradient(135deg, rgba(252, 231, 243, 0.8), rgba(243, 232, 255, 0.6), rgba(255, 237, 213, 0.4))'
                      }}
                   >
-                     <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center mb-4 shadow-lg">
-                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <div className="bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center mb-4 shadow-lg" style={{width: `${4 * zoomLevel}rem`, height: `${4 * zoomLevel}rem`}}>
+                        <svg className="text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{width: `${2 * zoomLevel}rem`, height: `${2 * zoomLevel}rem`}}>
                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
                         </svg>
                      </div>
                      <div className="text-center">
-                        <div className="text-xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-orange-500 bg-clip-text text-transparent mb-2" style={{fontFamily: 'Pacifico, cursive'}}>
+                        <div className="font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-orange-500 bg-clip-text text-transparent mb-2" style={{fontFamily: 'Pacifico, cursive', fontSize: `${1.25 * zoomLevel}rem`}}>
                            Start Your Post
                         </div>
-                        <div className="text-sm text-gray-600 font-medium opacity-90">
+                        <div className="text-gray-600 font-medium opacity-90" style={{fontSize: `${0.875 * zoomLevel}rem`}}>
                            Click to upload your first photo
                         </div>
                      </div>
