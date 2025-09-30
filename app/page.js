@@ -443,7 +443,7 @@ function SequenceStrip({
             </div>
          )}
 
-         <h2 className="font-bold text-center bg-gradient-to-r from-pink-600 via-purple-600 to-orange-500 bg-clip-text text-transparent pt-[30px] pb-4" style={{fontFamily: 'Pacifico, cursive', fontSize: `${5 * zoomLevel}rem`}}>
+         <h2 className="text-5xl font-bold text-center bg-gradient-to-r from-pink-600 via-purple-600 to-orange-500 bg-clip-text text-transparent pt-[30px] pb-4" style={{fontFamily: 'Pacifico, cursive'}}>
             Design Your Instagram
          </h2>
 
