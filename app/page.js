@@ -273,6 +273,17 @@ export default function Home() {
             onToggleSidebar={toggleSidebar}
             dragGhost={dragGhost}
          />
+
+         {/* Floating Help Button - Always visible in bottom right */}
+         <button
+            onClick={toggleSidebar}
+            className="absolute bottom-6 right-6 w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 rounded-full flex items-center justify-center btn-enhanced shadow-luxury hover:shadow-luxury-hover z-50"
+            title="Show help & info"
+         >
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+         </button>
       </div>
    );
 }
@@ -498,7 +509,7 @@ function SequenceStrip({
                   <div
                      key={index}
                      className={`flex-shrink-0 transform transition-all duration-700 ease-in-out cursor-pointer hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/25 hover:-translate-y-1 ${
-                        isCurrent ? 'animate-pulse scale-105 shadow-xl shadow-purple-500/15' : 'hover:opacity-90'
+                        isCurrent ? 'animate-pulse scale-105 shadow-lg shadow-purple-500/10' : 'hover:opacity-90'
                      } ${
                         removingPhotoId === photo.id ? 'animate-none' : ''
                      }`}
@@ -549,13 +560,13 @@ function SequenceStrip({
                            alt={photo.name}
                            className={`object-cover rounded-15 cursor-move transition-all duration-500 hover:brightness-110 ${
                               isCurrent
-                                 ? 'shadow-xl shadow-purple-500/20 ring-2 ring-pink-300/30 ring-offset-1 ring-offset-white/30'
+                                 ? 'shadow-lg shadow-purple-500/12 ring-1 ring-pink-300/20 ring-offset-1 ring-offset-white/20'
                                  : 'shadow-xl hover:shadow-2xl hover:shadow-pink-400/30'
                            }`}
                            style={{
                               width: `${280 * zoomLevel}px`,
                               height: `${280 * zoomLevel}px`,
-                              filter: isCurrent ? 'drop-shadow(0 0 15px rgba(236, 72, 153, 0.15))' : 'none'
+                              filter: isCurrent ? 'drop-shadow(0 0 10px rgba(236, 72, 153, 0.1))' : 'none'
                            }}
                            draggable
                            onDragStart={() => handleDragStartLocal(photo, "sequence")}
@@ -878,18 +889,6 @@ function UploadArea({
             </div>
          )}
 
-         {/* Floating Help Button (when collapsed) */}
-         {sidebarCollapsed && (
-            <button
-               onClick={onToggleSidebar}
-               className="absolute bottom-4 right-4 w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 rounded-full flex items-center justify-center btn-enhanced shadow-luxury hover:shadow-luxury-hover z-20"
-               title="Show help & info"
-            >
-               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-               </svg>
-            </button>
-         )}
       </div>
    );
 }
