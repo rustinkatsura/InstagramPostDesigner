@@ -498,7 +498,7 @@ function SequenceStrip({
                   <div
                      key={index}
                      className={`flex-shrink-0 transform transition-all duration-700 ease-in-out cursor-pointer hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/25 hover:-translate-y-1 ${
-                        isCurrent ? 'animate-pulse scale-105 shadow-2xl shadow-purple-500/30' : 'hover:opacity-90'
+                        isCurrent ? 'animate-pulse scale-105 shadow-xl shadow-purple-500/15' : 'hover:opacity-90'
                      } ${
                         removingPhotoId === photo.id ? 'animate-none' : ''
                      }`}
@@ -549,13 +549,13 @@ function SequenceStrip({
                            alt={photo.name}
                            className={`object-cover rounded-15 cursor-move transition-all duration-500 hover:brightness-110 ${
                               isCurrent
-                                 ? 'shadow-2xl shadow-purple-500/40 ring-4 ring-pink-300/50 ring-offset-2 ring-offset-white/50'
+                                 ? 'shadow-xl shadow-purple-500/20 ring-2 ring-pink-300/30 ring-offset-1 ring-offset-white/30'
                                  : 'shadow-xl hover:shadow-2xl hover:shadow-pink-400/30'
                            }`}
                            style={{
                               width: `${280 * zoomLevel}px`,
                               height: `${280 * zoomLevel}px`,
-                              filter: isCurrent ? 'drop-shadow(0 0 20px rgba(236, 72, 153, 0.3))' : 'none'
+                              filter: isCurrent ? 'drop-shadow(0 0 15px rgba(236, 72, 153, 0.15))' : 'none'
                            }}
                            draggable
                            onDragStart={() => handleDragStartLocal(photo, "sequence")}
