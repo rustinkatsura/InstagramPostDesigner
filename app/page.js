@@ -460,19 +460,21 @@ function SequenceStrip({
                         width: `${280 * zoomLevel}px`,
                         height: `${280 * zoomLevel}px`,
                         borderWidth: '3px',
-                        background: 'linear-gradient(135deg, rgba(252, 231, 243, 0.8), rgba(243, 232, 255, 0.6), rgba(255, 237, 213, 0.4))'
+                        background: 'linear-gradient(135deg, rgba(252, 231, 243, 0.8), rgba(243, 232, 255, 0.6), rgba(255, 237, 213, 0.4))',
+                        transition: 'width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.4s ease',
+                        transformOrigin: 'center'
                      }}
                   >
-                     <div className="bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center mb-4 shadow-lg" style={{width: `${4 * zoomLevel}rem`, height: `${4 * zoomLevel}rem`}}>
-                        <svg className="text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{width: `${2 * zoomLevel}rem`, height: `${2 * zoomLevel}rem`}}>
+                     <div className="bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center mb-4 shadow-lg" style={{width: `${4 * zoomLevel}rem`, height: `${4 * zoomLevel}rem`, transition: 'width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease', transformOrigin: 'center'}}>
+                        <svg className="text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{width: `${2 * zoomLevel}rem`, height: `${2 * zoomLevel}rem`, transition: 'width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)', transformOrigin: 'center'}}>
                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
                         </svg>
                      </div>
                      <div className="text-center">
-                        <div className="font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-orange-500 bg-clip-text text-transparent mb-2" style={{fontFamily: 'Pacifico, cursive', fontSize: `${1.25 * zoomLevel}rem`}}>
+                        <div className="font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-orange-500 bg-clip-text text-transparent mb-2" style={{fontFamily: 'Pacifico, cursive', fontSize: `${1.25 * zoomLevel}rem`, transition: 'font-size 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)', transformOrigin: 'center'}}>
                            Start Your Post
                         </div>
-                        <div className="text-gray-600 font-medium opacity-90" style={{fontSize: `${0.875 * zoomLevel}rem`}}>
+                        <div className="text-gray-600 font-medium opacity-90" style={{fontSize: `${0.875 * zoomLevel}rem`, transition: 'font-size 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)', transformOrigin: 'center'}}>
                            Click to upload your first photo
                         </div>
                      </div>
