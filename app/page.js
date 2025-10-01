@@ -63,12 +63,16 @@ export default function Home() {
             // Find the next empty slot
             actualIndex = sequencedPhotos.findIndex((p) => p === null);
             if (actualIndex === -1) {
-               // If no empty slots, don't add
-               return;
+               // If no empty slots, expand the array
+               actualIndex = sequencedPhotos.length;
             }
          }
 
          const newSequenced = [...sequencedPhotos];
+         // Expand array if needed
+         while (newSequenced.length <= actualIndex) {
+            newSequenced.push(null);
+         }
          newSequenced[actualIndex] = photo;
          setSequencedPhotos(newSequenced);
          setUploadedPhotos((prev) => prev.filter((p) => p.id !== photo.id));
@@ -115,7 +119,9 @@ export default function Home() {
          reorderedPhotos.splice(insertPosition, 0, removed);
 
          // Create new array with reordered photos from the beginning
-         const newSequenced = Array(8).fill(null);
+         // Keep at least 8 slots, or more if we have more photos
+         const minLength = Math.max(8, reorderedPhotos.length);
+         const newSequenced = Array(minLength).fill(null);
          reorderedPhotos.forEach((photo, index) => {
             newSequenced[index] = photo;
          });
@@ -147,9 +153,7 @@ export default function Home() {
 
       // Add after the last filled position (or at 0 if empty)
       const insertIndex = lastFilledIndex + 1;
-      if (insertIndex < sequencedPhotos.length) {
-         handleSequenceDrop(insertIndex);
-      }
+      handleSequenceDrop(insertIndex);
    };
 
    // Add handler for clicking gallery images to add to end of sequence
@@ -166,15 +170,17 @@ export default function Home() {
       // Add after the last filled position (or at 0 if empty)
       const insertIndex = lastFilledIndex + 1;
 
-      if (insertIndex < sequencedPhotos.length) {
-         const newSequenced = [...sequencedPhotos];
-         newSequenced[insertIndex] = photo;
-         setSequencedPhotos(newSequenced);
-         setUploadedPhotos((prev) => prev.filter((p) => p.id !== photo.id));
-         // Only change current index if this is the first photo being added
-         if (sequencedPhotos.every((p) => p === null)) {
-            setCurrentPhotoIndex(insertIndex);
-         }
+      const newSequenced = [...sequencedPhotos];
+      // Expand array if needed
+      while (newSequenced.length <= insertIndex) {
+         newSequenced.push(null);
+      }
+      newSequenced[insertIndex] = photo;
+      setSequencedPhotos(newSequenced);
+      setUploadedPhotos((prev) => prev.filter((p) => p.id !== photo.id));
+      // Only change current index if this is the first photo being added
+      if (sequencedPhotos.every((p) => p === null)) {
+         setCurrentPhotoIndex(insertIndex);
       }
    };
 
@@ -218,9 +224,15 @@ export default function Home() {
          // Animate removal
          setTimeout(() => {
             setSequencedPhotos((prev) => {
-               const newSequenced = prev.map((p) =>
-                  p?.id === photoId ? null : p
-               );
+               // Remove the photo and compact the array
+               const compactPhotos = prev.filter((p) => p !== null && p.id !== photoId);
+
+               // Keep at least 8 slots, or more if we have more photos
+               const minLength = Math.max(8, compactPhotos.length);
+               const newSequenced = Array(minLength).fill(null);
+               compactPhotos.forEach((photo, index) => {
+                  newSequenced[index] = photo;
+               });
 
                // If we're removing the currently selected photo, deselect it
                if (prev[currentPhotoIndex]?.id === photoId) {
@@ -1289,7 +1301,7 @@ function UploadArea({
                   </div>
                   <div className="text-xs text-gray-600">
                      Photos in sequence:{" "}
-                     {sequencedPhotos.filter((p) => p !== null).length}/8
+                     {sequencedPhotos.filter((p) => p !== null).length}
                   </div>
                </div>
             </div>
