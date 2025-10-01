@@ -526,7 +526,7 @@ function SequenceStrip({
          return "translateX(0)";
       }
 
-      const gapSize = 280 * zoomLevel + 10; // photo width + gap
+      const gapSize = 280 * zoomLevel + 16; // photo width + gap
 
       // dragOverIndex represents where we want to INSERT (between positions)
       // If dragging right: shift photos at or after insertIdx to the right
@@ -566,7 +566,7 @@ function SequenceStrip({
 
    return (
       <div
-         className="w-[100%] h-[50%] relative overflow-hidden flex flex-col z-20"
+         className="w-[100%] h-[50%] relative flex flex-col z-20"
          style={{
             background: `
                linear-gradient(135deg,
@@ -624,16 +624,18 @@ function SequenceStrip({
             </div>
          )}
 
-         <h2
-            className="text-5xl font-bold text-center bg-gradient-to-r from-pink-600 via-purple-600 to-orange-500 bg-clip-text text-transparent pt-[30px] pb-4"
-            style={{ fontFamily: "Pacifico, cursive" }}
-         >
-            Design Your Instagram
-         </h2>
+         <div className="flex-shrink-0 overflow-visible">
+            <h2
+               className="text-5xl font-bold text-center bg-gradient-to-r from-pink-600 via-purple-600 to-orange-500 bg-clip-text text-transparent pt-[30px] pb-6 px-4"
+               style={{ fontFamily: "Pacifico, cursive", lineHeight: "1.3" }}
+            >
+               Design Your Instagram
+            </h2>
+         </div>
 
          {/* Main Carousel View */}
          <div
-            className="flex-1 flex items-center px-[30px] py-6 relative overflow-x-auto scroll-smooth"
+            className="flex-1 flex items-center px-[30px] py-6 relative overflow-x-auto overflow-y-visible scroll-smooth"
             onClick={(e) => {
                // Deselect if clicking on empty space
                if (e.target === e.currentTarget) {
@@ -643,7 +645,7 @@ function SequenceStrip({
          >
             {/* All Visible Photos - Side by Side Layout */}
             <div
-               className={`flex items-center gap-[10px] transition-all duration-700 ease-in-out min-w-max mx-auto ${
+               className={`flex items-center gap-[16px] transition-all duration-700 ease-in-out min-w-max mx-auto ${
                   isTransitioning
                      ? "opacity-75 scale-95"
                      : "opacity-100 scale-100"
@@ -1022,7 +1024,7 @@ function UploadArea({
       >
          {/* Gallery Content */}
          <div
-            className="w-full p-6 transition-all duration-300"
+            className="w-full h-full p-6 transition-all duration-300 flex flex-col"
             style={{
                paddingRight: sidebarCollapsed ? "24px" : "280px",
             }}
@@ -1082,11 +1084,11 @@ function UploadArea({
                </div>
             ) : (
                <div
-                  className="flex flex-wrap max-h-64 overflow-y-auto p-3"
-                  style={{ gap: "6px" }}
+                  className="flex flex-wrap overflow-y-auto p-3 flex-1"
+                  style={{ gap: "6px 6px", alignContent: "flex-start" }}
                >
                   <label
-                     className="w-24 h-24 border-2 border-dashed border-pink-300 rounded-15 flex items-center justify-center cursor-pointer btn-enhanced shadow-luxury hover:shadow-luxury-hover bg-gradient-to-br from-pink-25 to-purple-25"
+                     className="w-24 h-24 flex-shrink-0 border-2 border-dashed border-pink-300 rounded-15 flex items-center justify-center cursor-pointer btn-enhanced shadow-luxury hover:shadow-luxury-hover bg-gradient-to-br from-pink-25 to-purple-25"
                      title="Upload more photos"
                   >
                      <svg
@@ -1115,7 +1117,7 @@ function UploadArea({
                   {uploadingPhotos.map((id) => (
                      <div
                         key={`skeleton-${id}`}
-                        className="w-24 h-24 rounded-15 skeleton bg-gradient-to-br from-pink-100 to-purple-100 animate-pulse"
+                        className="w-24 h-24 flex-shrink-0 rounded-15 skeleton bg-gradient-to-br from-pink-100 to-purple-100 animate-pulse"
                         style={{
                            animation:
                               "slideInFromBottom 0.3s ease-out, skeletonPulse 1.5s ease-in-out infinite",
@@ -1126,7 +1128,7 @@ function UploadArea({
                   {uploadedPhotos.map((photo, index) => (
                      <div
                         key={photo.id}
-                        className="relative group"
+                        className="relative group w-24 h-24 flex-shrink-0"
                         style={{
                            animation: `slideInFromBottom 0.5s ease-out ${
                               index * 0.1
@@ -1136,8 +1138,7 @@ function UploadArea({
                         <img
                            src={photo.url}
                            alt={photo.name}
-                           className="w-24 h-24 object-cover rounded-15 cursor-pointer btn-enhanced shadow-luxury hover:shadow-luxury-hover border-2 border-transparent hover:border-pink-300 hover:brightness-110"
-                           style={{ margin: "0.5px" }}
+                           className="w-24 h-24 object-cover rounded-15 cursor-pointer btn-enhanced shadow-luxury hover:shadow-luxury-hover border-2 border-transparent hover:border-pink-300 hover:brightness-110 block"
                            draggable
                            onDragStart={() => onDragStart(photo, "upload")}
                            onDragEnd={onDragEnd}
@@ -1177,16 +1178,16 @@ function UploadArea({
                pointerEvents: sidebarCollapsed ? "none" : "auto",
             }}
          >
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex justify-between items-center mb-6 pb-1 flex-shrink-0">
                <h2
-                  className="text-2xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-orange-500 bg-clip-text text-transparent"
-                  style={{ fontFamily: "Pacifico, cursive" }}
+                  className="text-xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-orange-500 bg-clip-text text-transparent pb-1"
+                  style={{ fontFamily: "Pacifico, cursive", lineHeight: "1.5" }}
                >
                   Photo Gallery
                </h2>
                <button
                   onClick={onToggleSidebar}
-                  className="w-6 h-6 rounded-full bg-gradient-to-r from-pink-400 to-purple-400 hover:from-pink-500 hover:to-purple-500 flex items-center justify-center btn-enhanced shadow-luxury hover:shadow-luxury-hover"
+                  className="w-6 h-6 rounded-full bg-gradient-to-r from-pink-400 to-purple-400 hover:from-pink-500 hover:to-purple-500 flex items-center justify-center btn-enhanced shadow-luxury hover:shadow-luxury-hover flex-shrink-0"
                   title="Hide sidebar"
                >
                   <svg
@@ -1206,7 +1207,7 @@ function UploadArea({
             </div>
 
             <div
-               className="space-y-4 overflow-y-auto"
+               className="space-y-4 overflow-y-auto overflow-x-visible"
                style={{ maxHeight: "calc(100% - 60px)" }}
             >
                {/* Add floating decoration elements */}
